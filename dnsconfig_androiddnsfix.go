@@ -34,6 +34,7 @@ type dnsConfig struct {
 }
 
 // copy from /src/net/dnsclient_unix.go
+//go:linkname resolverConfig net.ResolverConfig
 type resolverConfig struct {
 	initOnce sync.Once // guards init of resolverConfig
 
