@@ -15,7 +15,7 @@ import (
 var defaultNS []string
 
 // copy from /src/net/dnsclient_unix.go
-//go:linkname resolverConfig net.ResolverConfig
+//go:linkname resolverConfig net.resolverConfig
 type resolverConfig struct {
 	initOnce sync.Once // guards init of resolverConfig
 
@@ -29,7 +29,6 @@ type resolverConfig struct {
 }
 
 // need to keep sync with go version
-//go:linkname resolvConf net.resolvConf
 var resolvConf resolverConfig
 
 // copy from /src/net/dnsconfig_unix.go
@@ -48,7 +47,7 @@ type dnsConfig struct {
 }
 
 
-//go:linkname tryUpdate net.tryUpdate
+//go:linkname (*resolverConfig).tryUpdate net.(*resolverConfig).tryUpdate
 func (*resolverConfig) tryUpdate(string)
 
 // Need an empty .s file (dnsconfig_empty.s)
