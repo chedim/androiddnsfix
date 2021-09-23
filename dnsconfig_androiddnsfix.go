@@ -14,19 +14,6 @@ import (
 //go:linkname defaultNS net.defaultNS
 var defaultNS []string
 
-// copy from /src/net/dnsclient_unix.go
-type resolverConfig struct {
-	initOnce sync.Once // guards init of resolverConfig
-
-	// ch is used as a semaphore that only allows one lookup at a
-	// time to recheck resolv.conf.
-	ch          chan struct{} // guards lastChecked and modTime
-	lastChecked time.Time     // last time resolv.conf was checked
-
-	mu        sync.RWMutex // protects dnsConfig
-	dnsConfig *dnsConfig   // parsed resolv.conf structure used in lookups
-}
-
 // need to keep sync with go version
 var resolvConf resolverConfig
 
