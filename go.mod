@@ -1,3 +1,3 @@
 module github.com/chedim/androiddnsfix
 
-go 1.17.1
+go 1.17
