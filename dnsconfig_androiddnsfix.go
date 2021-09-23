@@ -15,7 +15,6 @@ import (
 var defaultNS []string
 
 // copy from /src/net/dnsclient_unix.go
-//go:linkname resolverConfig net.resolverConfig
 type resolverConfig struct {
 	initOnce sync.Once // guards init of resolverConfig
 
