@@ -46,7 +46,7 @@ type resolverConfig struct {
 	dnsConfig *dnsConfig   // parsed resolv.conf structure used in lookups
 }
 
-//go:linkname (*resolverConfig).tryUpdate net.(*resolverConfig).tryUpdate
+//go:linkname (*resolverConfig).tryUpdate(string) net.(*resolverConfig).tryUpdate(string)
 func (*resolverConfig) tryUpdate(string)
 
 // Need an empty .s file (dnsconfig_empty.s)
