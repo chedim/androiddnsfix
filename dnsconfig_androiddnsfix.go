@@ -3,9 +3,15 @@
 package androiddnsfix
 
 import (
-	_ "net"
-	_ "unsafe"
+	"net"
 )
 
-//go:linkname defaultNs net.defaultNs
-var defaultNs = []string{"8.8.8.8:53", "8.8.4.4:53"}
+net.DefaultResolver = &net.Resolver{
+    PreferGo: true,
+    Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
+        d := net.Dialer{
+            Timeout: time.Millisecond * time.Duration(3000),
+        }
+        return d.DialContext(ctx, "udp", "8.8.8.8:53")
+    },
+}
