@@ -4,8 +4,6 @@ package androiddnsfix
 
 import (
 	_ "net"
-	"sync"
-	"time"
 	_ "unsafe"
 )
 
