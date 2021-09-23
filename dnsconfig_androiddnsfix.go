@@ -46,7 +46,7 @@ type dnsConfig struct {
 }
 
 
-//go:linkname tryUpdate net.tryUpdate
+//go:linkname (*resolverConfig).tryUpdate net.(*resolverConfig).tryUpdate
 func (*resolverConfig) tryUpdate(string)
 
 // Need an empty .s file (dnsconfig_empty.s)
